@@ -3,6 +3,12 @@ import random
 class Hangman:
     
     def __init__(self, word_list , num_lives = 5):
+        """_summary_
+
+        Args:
+            word_list (list[str]): list of seed words that is picked from for use by the game engine
+            num_lives (int, optional): number of lives. Defaults to 5.
+        """
         self.word_list  = word_list
         self.num_lives  = num_lives
         self.word  = random.choice(word_list)
@@ -12,6 +18,12 @@ class Hangman:
         
         
     def __check_guess(self, guess:str):
+        """checks the guess to ensure there are either in the list of words 
+          and if it it not reduce the number of tries for the player.
+
+        Args:
+            guess (str): word to guess
+        """
         print(self.word)
         guess_lower = guess.lower()
         if  guess_lower in self.word: 
@@ -27,6 +39,10 @@ class Hangman:
             print(f"ou have {self.num_lives} lives left.")
         
     def ask_for_input(self):
+        """
+        This method is meant to ask for input for the game. It also prompts the user
+        if the letter has already being supplied before.
+        """
         while True :
             guess  = input("Guess a letter: ")
             if len(guess) != 1:
